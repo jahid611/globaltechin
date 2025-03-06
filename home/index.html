@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Techin S.R.L</title>
+  
+  <!-- Bibliothèques CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #3a0066;       /* Violet profond amélioré pour meilleur contraste */
+      --primary-dark: #2a0045;  /* Variante plus foncée de la couleur principale */
+      --secondary: #8a5fb8;     /* Lavande plus vif pour meilleur contraste */
+      --dark: #1a1a2e;          /* Bleu très foncé presque noir */
+      --light: #f8fafc;         /* Blanc cassé pour le fond */
+      --accent: #6a11cb;        /* Accent mauve */
+      --gray: #64748b;          /* Gris bleuté */
+      --success: #10b981;       /* Vert */
+      --warning: #f59e0b;       /* Orange */
+      --info: #06b6d4;          /* Bleu clair */
+      --text-light: #f8fafc;    /* Texte clair */
+      --text-dark: #1a1a2e;     /* Texte foncé */
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Poppins', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--dark);
+      overflow-x: hidden;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+
+    .section-padding {
+      padding: 120px 0;
+    }
+
+    .text-gradient {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      transition: all 0.3s ease;
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+    }
+
+    .navbar-brand {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-brand img {
+      height: 50px;
+      margin-right: 10px;
+      /* Supprimer cette ligne qui rend le logo blanc */
+      /* filter: brightness(0) invert(1); */
+    }
+
+    .navbar.scrolled .navbar-brand img {
+      /* Assurons-nous qu'aucun filtre n'est appliqué */
+      filter: none;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      margin: 0 15px;
+      position: relative;
+      transition: all 0.3s ease;
+      color: var(--text-light);
+    }
+
+    .nav-link:before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--light);
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover:before, .nav-link.active:before {
+      width: 100%;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--light);
+    }
+
+    .navbar.scrolled .nav-link {
+      color: var(--primary-dark);
+    }
+
+    .navbar.scrolled .nav-link:before {
+      background: var(--primary);
+    }
+
+    .navbar.scrolled .nav-link:hover, .navbar.scrolled .nav-link.active {
+      color: var(--primary);
+    }
+
+    /* Hero Section avec image de fond */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    /* Style pour l'image de fond qui prend toute la page */
+    .hero-background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-image: url('https://www.prevor.com/app/uploads/sites/2/2020/08/metallurgie-1.jpg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* Overlay sombre pour améliorer la lisibilité du texte */
+    .hero-overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--text-light);
+    }
+
+    .hero-title {
+      font-size: 4.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+      font-weight: 400;
+    }
+
+    .btn-custom {
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn-primary-custom {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      border: none;
+      color: white;
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(58, 0, 102, 0.3);
+    }
+
+    .btn-outline-custom {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      border: 2px solid var(--light);
+      color: var(--light);
+    }
+
+    .btn-outline-custom:hover {
+      background: var(--light);
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-custom:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.5s ease;
+      z-index: -1;
+    }
+
+    .btn-custom:hover:before {
+      left: 100%;
+    }
+
+    .hero-image {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Service & Product Cards Styles */
+    .service-card, .product-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      margin: 15px;
+      height: 100%;
+    }
+
+    .service-card:hover, .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(58, 0, 102, 0.2);
+    }
+
+    .service-image, .product-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .service-image img, .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+
+    .service-overlay, .product-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(58, 0, 102, 0.8), rgba(138, 95, 184, 0.8));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover .service-overlay,
+    .product-card:hover .product-overlay {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--primary);
+      transform: scale(0);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1);
+    }
+
+    .service-content, .product-content {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .service-content h4, .product-content h4 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .service-content p, .product-content p {
+      color: var(--gray);
+      margin-bottom: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Swiper Styles */
+    .swiper {
+      padding: 30px 10px;
+      background: #000000;
+      border-radius: 20px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-size: 1.2rem;
+    }
+
+    .swiper-pagination-bullet {
+      background: #ffffff;
+      opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      background: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: var(--text-light);
+      padding: 80px 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-logo {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-text {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 25px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .footer-social-link {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .footer-social-link:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-links h5 {
+      color: white;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 15px;
+    }
+
+    .footer-links ul li a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links ul li a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      margin-top: 60px;
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(58, 0, 102, 0.3);
+    }
+
+    /* Preloader */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .preloader.fade-out {
+      opacity: 0;
+    }
+
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 991px) {
+      .hero-title {
+        font-size: 3.5rem;
+      }
+      .section-padding {
+        padding: 80px 0;
+      }
+      .navbar-collapse {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 15px;
+      }
+      .nav-link {
+        margin: 10px 0;
+      }
+      .navbar.scrolled .navbar-collapse {
+        background: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      .section-padding {
+        padding: 60px 0;
+      }
+      .service-image, .product-image {
+        height: 200px;
+      }
+      
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
+
+    .service-card, .product-card {
+      background: #1a1a1a;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      margin: 15px;
+      height: 100%;
+    }
+
+    .service-content h4, .product-content h4 {
+      color: #ffffff;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .service-content p, .product-content p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 0;
+      font-size: 0.9rem;
+    }
+
+    #footer-logo {
+      height: 50px;
+      margin-bottom: 15px;
+      /* Supprimer cette ligne qui rend le logo blanc */
+      /* filter: brightness(0) invert(1); */
+    }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Image de fond et overlay pour toute la page -->
+  <div class="hero-background"></div>
+  <div class="hero-overlay"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <!-- Logo directement intégré en base64 -->
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FetchedFromUrl_1741229287522_preview_rev_1-RovxIHghJsU5ASid6M8cPtwobZD6ib.png" alt="Global Techin Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#HSE&QUALITY">HSE&QUALITY</a></li>
+          <li class="nav-item"><a class="nav-link" href="#SERVICES">SERVICES</a></li>
+          <li class="nav-item"><a class="nav-link" href="#PRODUCTS">PRODUCTS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#MATERIALS">MATERIALS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#CONTACT">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section (une seule section qui prend toute la page) -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-content" data-aos="fade-right" data-aos-duration="1000">
+          <h1 class="hero-title">ABOUT <span class="text-gradient">GLOBALTECHIN</span></h1>
+          <p class="hero-subtitle">
+            With years of experience in metal manufacturing, we offer solutions for subsea wellhead to topsides, surface drilling, pipeline, petrochemical, renewable energy, nuclear, transportation.
+            <br><br>
+            We are focused on long-term expertise and the newest technology standards and high quality. Today, GlobalTechin is the leading global manufacturer and distributor of materials for Oil and Gas, Petrochemical, Nuclear, Renewable Energy, Mining, Water, and Military sectors.
+          </p>
+          <div class="d-flex gap-3">
+            <a href="#CONTACT" class="btn btn-custom btn-primary-custom">Démarrer un projet</a>
+            <a href="#SERVICES" class="btn btn-custom btn-outline-custom">Voir nos travaux</a>
+          </div>
+        </div>
+        <div class="col-lg-6 hero-image" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+          <img src="https://globaltechin.ro/wp-content/uploads/2018/09/about_globaltechin_filter.jpg" 
+               alt="GlobalTechin Image" class="img-fluid floating">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deuxième section avec image à gauche et texte à droite -->
+  <section id="about" class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-image order-lg-1 order-2" data-aos="fade-right" data-aos-duration="1000">
+          <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-cladding-and-buttering-1.jpg" 
+               alt="GlobalTechin Image" class="img-fluid floating">
+        </div>
+        <div class="col-lg-6 hero-content order-lg-2 order-1" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+          <h1 class="hero-title">
+            OUR <span class="text-gradient"> MISSION</span></h1>
+          <p class="hero-subtitle">
+            <br><br>
+        Providing the best service is crucial, that is why for our team this is the top priority.   
+
+        <br><br>
+
+            We understand the challenges our clients face and we aim to exceed their expectations, by providing the best quality, delivery and overall service.
+
+            <br><br>
+            We are committed to provide exceptional products through our skilled and dedicated team and high standard manufacturing technologies.
+
+        </p>
+
+          <div class="d-flex gap-3">
+            <a href="#SERVICES" class="btn btn-custom btn-primary-custom">Nos services</a>
+            <a href="#PRODUCTS" class="btn btn-custom btn-outline-custom">Nos produits</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services & Products Section -->
+  <section id="SERVICES" class="section-padding" style="background: #000000; position: relative; z-index: 2; color: white;">
+    <div class="container">
+      <!-- Services Section -->
+      <div class="row text-center mb-5">
+        <div class="col-12">
+          <h2 class="display-4 mb-4 text-white" data-aos="fade-up">OUR <span class="text-gradient">SERVICES</span></h2>
+        </div>
+      </div>
+      
+      <!-- Services Slider -->
+      <div class="swiper services-slider mb-5">
+        <div class="swiper-wrapper">
+          <!-- Project Management -->
+          <div class="swiper-slide" data-aos="fade-up">
+            <div class="service-card">
+              <div class="service-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-project-management-and-documentation-icon.png" alt="Project Management">
+                <div class="service-overlay">
+                  <div class="service-icon">
+                    <i class="fas fa-tasks"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <h4>Project Management</h4>
+                <p>Strategic project planning and execution with comprehensive documentation</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Engineering -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card">
+              <div class="service-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-engineering-icon.png" alt="Engineering">
+                <div class="service-overlay">
+                  <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <h4>Engineering</h4>
+                <p>Cutting-edge 3D modeling and innovative technical solutions</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Precision -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card">
+              <div class="service-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-precision-machining-icon.png" alt="Precision Machining">
+                <div class="service-overlay">
+                  <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <h4>Precision Machining</h4>
+                <p>High-precision manufacturing with state-of-the-art equipment</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Forging -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card">
+              <div class="service-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-forging-and-heat-icon.png" alt="Forging">
+                <div class="service-overlay">
+                  <div class="service-icon">
+                    <i class="fas fa-fire"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <h4>Forging & Heat Treatment</h4>
+                <p>Advanced metallurgical processes and heat treatment solutions</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fabrication -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card">
+              <div class="service-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-fabrication-and-coating-icon.png" alt="Fabrication">
+                <div class="service-overlay">
+                  <div class="service-icon">
+                    <i class="fas fa-fire"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <h4>Fabrication and Coating</h4>
+                <p>Custom fabrication with specialized coating applications</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testing -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card">
+              <div class="service-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-testing-and-ndt-icon.png" alt="Testing">
+                <div class="service-overlay">
+                  <div class="service-icon">
+                    <i class="fas fa-microscope"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <h4>Testing and NDT</h4>
+                <p>Advanced non-destructive testing and quality assurance</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cladding -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-card">
+              <div class="service-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-cladding-and-buttering-icon.png" alt="Cladding">
+                <div class="service-overlay">
+                  <div class="service-icon">
+                    <i class="fas fa-layer-group"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="service-content">
+                <h4>Cladding and Buttering</h4>
+                <p>Specialized surface engineering and material protection</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+
+      <!-- Products Section -->
+      <div class="row text-center mb-5 mt-5 pt-5" id="PRODUCTS">
+        <div class="col-12">
+          <h2 class="display-4 mb-4 text-white" data-aos="fade-up">OUR <span class="text-gradient">PRODUCTS</span></h2>
+        </div>
+      </div>
+
+      <!-- Products Slider - CORRIGÉ -->
+      <div class="swiper products-slider">
+        <div class="swiper-wrapper">
+          <!-- Blocks and Discs -->
+          <div class="swiper-slide" data-aos="fade-up">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/BLOCKS-AND-DISCS-1.png" alt="Blocks and Discs">
+                <div class="product-overlay">
+                  <a href="#" class="btn btn-custom btn-primary-custom">Learn More</a>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4>Blocks and Discs</h4>
+                <p>Precision-engineered components for critical applications</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Flanges and Rings -->
+          <div class="swiper-slide" data-aos="fade-up">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/FLANGES-AND-RINGS.png" alt="Flanges and Rings">
+                <div class="product-overlay">
+                  <a href="#" class="btn btn-custom btn-primary-custom">Learn More</a>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4>Flanges and Rings</h4>
+                <p>Custom-designed flanges and rings for industrial use</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FITTINGS -->
+          <div class="swiper-slide" data-aos="fade-up">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/FITTINGS.png" alt="Fittings">
+                <div class="product-overlay">
+                  <a href="#" class="btn btn-custom btn-primary-custom">Learn More</a>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4>Fittings</h4>
+                <p>High-performance industrial fittings and connections</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORGED PIPES AND SHAFTS -->
+          <div class="swiper-slide" data-aos="fade-up">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/FORGED-PIPES-AND-SHAFTS.png" alt="Forged Pipes and Shafts">
+                <div class="product-overlay">
+                  <a href="#" class="btn btn-custom btn-primary-custom">Learn More</a>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4>Forged Pipes and Shafts</h4>
+                <p>Heavy-duty forged components for demanding environments</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PIG Launchers -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/PIG-LAUNCHERS-AND-RECEIVERS.png" alt="PIG Launchers">
+                <div class="product-overlay">
+                  <a href="#" class="btn btn-custom btn-primary-custom">Learn More</a>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4>PIG Launchers and Receivers</h4>
+                <p>Advanced pipeline inspection and maintenance systems</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spools -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/SPOOLS-AND-SKIDS.png" alt="Spools">
+                <div class="product-overlay">
+                  <a href="#" class="btn btn-custom btn-primary-custom">Learn More</a>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4>Spools and Skids</h4>
+                <p>Engineered piping solutions and modular skid systems</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Self Reinforced Connections -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/SELF-REINFORCED-CONNECTIONS.png" alt="Self Reinforced Connections">
+                <div class="product-overlay">
+                  <a href="#" class="btn btn-custom btn-primary-custom">Learn More</a>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4>Self Reinforced Connections</h4>
+                <p>Innovative self-reinforcing connection technology</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Special Subsea and Piping Components -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/SPECIAL-SUBSEA-AND-PIPING-COMPONENTS-1.png" alt="Special Subsea and Piping Components">
+                <div class="product-overlay">
+                  <a href="#" class="btn btn-custom btn-primary-custom">Learn More</a>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4>Special Subsea Components</h4>
+                <p>Specialized components for underwater applications</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Welded Structures -->
+          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
+            <div class="product-card">
+              <div class="product-image">
+                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/WELDED-STRUCTURES-AND-VESSELS.png" alt="Welded Structures">
+                <div class="product-overlay">
+                  <a href="#" class="btn btn-custom btn-primary-custom">Learn More</a>
+                </div>
+              </div>
+              <div class="product-content">
+                <h4>Welded Structures</h4>
+                <p>Custom-engineered welded structures and pressure vessels</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <div class="footer-logo">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FetchedFromUrl_1741229287522_preview_rev_1-RovxIHghJsU5ASid6M8cPtwobZD6ib.png" id="footer-logo" alt="Global Techin Logo">
+          </div>
+          <p class="footer-text">Nous proposons des solutions de haute qualité pour les secteurs du pétrole et du gaz, de la pétrochimie, du nucléaire, des énergies renouvelables et plus encore.</p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+          <div class="footer-links">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#HSE&QUALITY">HSE & Quality</a></li>
+              <li><a href="#SERVICES">Services</a></li>
+              <li><a href="#PRODUCTS">Products</a></li>
+              <li><a href="#MATERIALS">Materials</a></li>
+              <li><a href="#INDUSTRIES">Industries</a></li>
+              <li><a href="#CONTACT">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+          <div class="footer-links">
+            <h5>Services</h5>
+            <ul>
+              <li><a href="#">Fabrication</a></li>
+              <li><a href="#">Distribution</a></li>
+              <li><a href="#">Conseil</a></li>
+              <li><a href="#">Ingénierie</a></li>
+              <li><a href="#">Maintenance</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer-links">
+            <h5>Newsletter</h5>
+            <p class="footer-text">Abonnez-vous à notre newsletter pour recevoir nos dernières actualités et offres.</p>
+            <form class="mt-4">
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Votre Email" required>
+                <button class="btn btn-primary-custom" type="submit">S'abonner</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom text-center">
+        <p class="copyright">© 2025 GlobalTechin S.R.L. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Main JavaScript -->
+  <script>
+    window.addEventListener('load', function() {
+      const preloader = document.querySelector('.preloader');
+      preloader.classList.add('fade-out');
+      setTimeout(() => { preloader.style.display = 'none'; }, 500);
+      
+      // Initialize AOS
+      AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+      
+      // Initialize Swiper
+      const swiperOptions = {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          }
+        }
+      };
+
+      // Initialize both sliders
+      if (document.querySelector('.services-slider')) {
+        new Swiper('.services-slider', swiperOptions);
+      }
+      
+      // Initialize products slider separately to ensure it works perfectly
+      if (document.querySelector('.products-slider')) {
+        new Swiper('.products-slider', swiperOptions);
+      }
+      
+      // Sticky Header et Back to Top
+      window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+        const backToTop = document.querySelector('.back-to-top');
+        backToTop.classList.toggle('active', window.scrollY > 300);
+      });
+      
+      document.querySelector('.back-to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
+
