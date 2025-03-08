@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spools & Skids - GlobalTechin</title>
+  <title>Industries - Global Techin S.R.L</title>
   
   <!-- Bibliothèques CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
@@ -108,7 +108,7 @@
     }
 
     .logo img {
-      height: 65px;
+      height: 50px;
       transition: all 0.3s ease;
     }
 
@@ -297,243 +297,144 @@
       }
     }
 
-    /* Product Detail Page Styles */
-    .product-detail-hero {
+    /* Hero Section avec image de fond */
+    .hero {
       position: relative;
-      padding-top: calc(var(--header-height) + 50px);
-      padding-bottom: 50px;
-      background: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(42, 0, 69, 0.95));
-      color: var(--text-light);
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+      padding-top: var(--header-height);
     }
 
-    .product-detail-title {
-      font-size: 3.5rem;
+    /* Style pour l'image de fond qui prend toute la page */
+    .hero-background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-image: url('https://telemme.mmsh.fr/wp-content/uploads/2023/06/Sans-titre-1-scaled.jpg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* Overlay sombre pour améliorer la lisibilité du texte */
+    .hero-overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 4.5rem;
       margin-bottom: 1.5rem;
+      line-height: 1.1;
       color: white;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
-    .product-detail-image {
-      max-width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      transition: all 0.5s ease;
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+      font-weight: 400;
     }
 
-    .product-detail-image:hover {
-      transform: scale(1.02);
-    }
-
-    .product-detail-content {
-      padding: 80px 0;
-      background-color: var(--light);
-    }
-
-    .product-detail-section {
-      margin-bottom: 60px;
-    }
-
-    .product-detail-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+    /* Industries Cards */
+    .industries-section {
       position: relative;
-      padding-bottom: 15px;
+      z-index: 2;
+      padding: 80px 0;
     }
 
-    .product-detail-section h2:after {
-      content: '';
+    /* Ajout d'une classe pour réduire la largeur des colonnes */
+    .industry-column {
+      padding: 0 8px; /* Réduit l'espacement horizontal */
+    }
+
+    .industry-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0;
+      margin-bottom: 12px;
+      height: 90px; /* Réduit de 120px à 90px */
+      width: 90%; /* Réduit la largeur à 90% du conteneur */
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid black;
+      transition: all 0.3s ease;
+    }
+
+    .industry-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .industry-image {
+      width: 100%;
+      height: 70%; /* Réduit de 75% à 70% */
+      object-fit: cover;
+      image-rendering: -webkit-optimize-contrast;
+      transform: translateZ(0);
+      max-height: 63px; /* Réduit de 90px à 63px */
+    }
+
+    .industry-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-    }
-
-    .product-detail-section p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: var(--gray);
-      margin-bottom: 20px;
-    }
-
-    .product-feature {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 25px;
-    }
-
-    .product-feature-icon {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(45deg, var(--primary), var(--secondary));
-      border-radius: 50%;
+      width: 100%;
+      height: 30%; /* Augmenté de 25% à 30% pour la lisibilité */
+      background: black;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 20px;
+      padding: 3px;
+    }
+
+    .industry-title {
       color: white;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-
-    .product-feature-text h4 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      color: var(--primary-dark);
-    }
-
-    .product-feature-text p {
-      font-size: 1rem;
-      color: var(--gray);
-      margin-bottom: 0;
-    }
-
-    .product-gallery {
-      margin-top: 40px;
-    }
-
-    .product-gallery-title {
-      font-size: 1.8rem;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .gallery-image {
-      border-radius: 15px;
-      overflow: hidden;
-      margin-bottom: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .gallery-image:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    .gallery-image img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      transition: all 0.5s ease;
-    }
-
-    .gallery-image:hover img {
-      transform: scale(1.05);
-    }
-
-    /* Related Products Section */
-    .related-products {
-      padding: 80px 0;
-      background: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(42, 0, 69, 0.95));
-      color: var(--text-light);
-    }
-
-    .related-products h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      text-align: center;
-      color: white;
-    }
-
-    /* Swiper Styles */
-    .swiper {
-      padding: 30px 10px;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 20px;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.1);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-
-    .swiper-button-next:after,
-    .swiper-button-prev:after {
-      font-size: 1.2rem;
-    }
-
-    .swiper-pagination-bullet {
-      background: #ffffff;
-      opacity: 0.5;
-    }
-
-    .swiper-pagination-bullet-active {
-      opacity: 1;
-      background: #ffffff;
-    }
-
-    .product-card {
-      background: #1a1a1a;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-      margin: 15px;
-      height: 100%;
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .product-image {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: all 0.5s ease;
-    }
-
-    .product-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(58, 0, 102, 0.8), rgba(138, 95, 184, 0.8));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-
-    .product-card:hover .product-overlay {
-      opacity: 1;
-    }
-
-    .product-content {
-      padding: 25px;
-      text-align: center;
-    }
-
-    .product-content h4 {
-      color: #ffffff;
-      margin-bottom: 15px;
+      font-size: 0.6rem; /* Réduit de 0.7rem à 0.6rem */
       font-weight: 600;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      text-align: center;
+      line-height: 1;
     }
 
-    .product-content p {
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 0;
-      font-size: 0.9rem;
+    @media (max-width: 767px) {
+      .industry-card {
+        height: 80px; /* Réduit de 100px à 80px */
+        width: 85%; /* Encore plus petit sur mobile */
+      }
+      .industry-title {
+        font-size: 0.55rem; /* Réduit de 0.65rem à 0.55rem */
+      }
+      .industry-image {
+        max-height: 56px;
+      }
+    }
+
+    .industry-description {
+      display: none; /* Masquer la description */
     }
 
     /* Footer - Redesigned and Compact */
@@ -777,29 +678,28 @@
     
     /* Responsive Styles */
     @media (max-width: 991px) {
-      .product-detail-title {
-        font-size: 2.8rem;
+      .hero-title {
+        font-size: 3.5rem;
       }
-      .product-detail-section h2 {
-        font-size: 2rem;
+      .section-padding {
+        padding: 80px 0;
       }
     }
 
     @media (max-width: 767px) {
-      .product-detail-title {
-        font-size: 2.2rem;
+      .hero-title {
+        font-size: 2.5rem;
       }
-      .product-detail-section h2 {
-        font-size: 1.8rem;
+      .hero-subtitle {
+        font-size: 1.2rem;
       }
-      .product-detail-section p {
-        font-size: 1rem;
+      .section-padding {
+        padding: 60px 0;
       }
-      .product-feature-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
-      }
+    }
+
+    #footer-logo {
+      height: 40px;
     }
   </style>
 </head>
@@ -809,11 +709,15 @@
     <div class="loader"></div>
   </div>
 
+  <!-- Image de fond et overlay pour toute la page -->
+  <div class="hero-background"></div>
+  <div class="hero-overlay"></div>
+
   <!-- Header Redesign -->
   <header class="header">
     <div class="container-fluid">
       <div class="header-inner">
-        <a href="../index.html" class="logo">
+        <a href="index.html" class="logo">
           <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FetchedFromUrl_1741229287522_preview_rev_1-RovxIHghJsU5ASid6M8cPtwobZD6ib.png" alt="Global Techin Logo">
         </a>
         
@@ -824,266 +728,103 @@
         <div class="nav-menu" id="nav-menu">
           <ul class="nav-list">
             <li class="nav-item">
-              <a href="../index.html" class="nav-link">Home</a>
+              <a href="index.html" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="../hse&quality/index.html" class="nav-link">HSE&QUALITY</a>
+              <a href="#HSE&QUALITY" class="nav-link">HSE&QUALITY</a>
             </li>
             <li class="nav-item">
-              <a href="../services/index.html" class="nav-link">SERVICES</a>
+              <a href="#SERVICES" class="nav-link">SERVICES</a>
             </li>
             <li class="nav-item">
-              <a href="../products/index.html" class="nav-link active">PRODUCTS</a>
+              <a href="#PRODUCTS" class="nav-link">PRODUCTS</a>
             </li>
             <li class="nav-item">
-              <a href="../materials/index.html" class="nav-link">MATERIALS</a>
+              <a href="#MATERIALS" class="nav-link">MATERIALS</a>
             </li>
             <li class="nav-item">
-              <a href="../contact/index.html" class="nav-link">CONTACT</a>
+              <a href="./industries.html" class="nav-link active">INDUSTRIES</a>
+            </li>
+            <li class="nav-item">
+              <a href="#CONTACT" class="nav-link">CONTACT</a>
             </li>
           </ul>
+          
+          <div class="header-actions d-none d-lg-flex">
+          </div>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Product Hero Section -->
-  <section class="product-detail-hero">
+  <!-- Hero Section -->
+  <section id="industries-hero" class="hero">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-          <h1 class="product-detail-title">SPOOLS & <span class="text-gradient">SKIDS</span></h1>
-          <p class="lead text-light mb-4">
-            Engineered piping solutions and modular skid systems designed for efficient installation, optimal performance, and reliable operation in demanding industrial environments.
+      <div class="row">
+        <div class="col-12 hero-content" data-aos="fade-up" data-aos-duration="1000">
+          <h1 class="hero-title">OUR <span class="text-gradient">INDUSTRIES</span></h1>
+          <p class="hero-subtitle">
+            Global Techin provides specialized solutions across multiple sectors, delivering excellence in every industry we serve.
           </p>
-          <div class="d-flex gap-3 mb-4">
-            <a href="../contact/index.html" class="btn btn-custom btn-primary-custom">Request Quote</a>
-            <a href="#solutions" class="btn btn-custom btn-outline-custom">Our Solutions</a>
-          </div>
-        </div>
-        <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
-          <img src="https://globaltechin.ro/wp-content/uploads/2018/06/SPOOLS-AND-SKIDS.png" 
-               alt="Spools & Skids" class="product-detail-image img-fluid">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Product Content Section -->
-  <section class="product-detail-content">
+  <!-- Industries Section -->
+  <section class="industries-section">
     <div class="container">
-      <!-- Overview Section -->
-      <div class="product-detail-section" data-aos="fade-up">
-        <h2>Product Overview</h2>
-        <p>
-          GlobalTechin's Spools & Skids represent comprehensive engineered solutions for fluid handling and process systems across various industries. Our spools are precision-fabricated piping assemblies designed for seamless integration into complex piping networks, while our skid systems provide modular, pre-assembled process units that minimize on-site installation time and costs.
-        </p>
-        <p>
-          With our extensive experience in engineering, fabrication, and quality control, we deliver high-performance solutions that meet the most stringent industry standards and client specifications. Our products are designed for reliability, efficiency, and ease of maintenance, ensuring optimal performance throughout their service life.
-        </p>
-      </div>
-
-      <!-- Solutions Section -->
-      <div id="solutions" class="product-detail-section" data-aos="fade-up" data-aos-delay="100">
-        <h2>Our Solutions</h2>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="product-feature">
-              <div class="product-feature-icon">
-                <i class="fas fa-project-diagram"></i>
-              </div>
-              <div class="product-feature-text">
-                <h4>Custom Spool Fabrication</h4>
-                <p>Precision-engineered piping spools designed to your exact specifications for seamless integration into your systems</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-feature">
-              <div class="product-feature-icon">
-                <i class="fas fa-cubes"></i>
-              </div>
-              <div class="product-feature-text">
-                <h4>Modular Skid Systems</h4>
-                <p>Pre-assembled process units on structural frames for efficient transportation, installation, and commissioning</p>
-              </div>
-            </div>
-            installation, and commissioning</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-feature">
-              <div class="product-feature-icon">
-                <i class="fas fa-cogs"></i>
-              </div>
-              <div class="product-feature-text">
-                <h4>Process Integration</h4>
-                <p>Comprehensive solutions that integrate multiple process components into a single, efficient system</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-feature">
-              <div class="product-feature-icon">
-                <i class="fas fa-tools"></i>
-              </div>
-              <div class="product-feature-text">
-                <h4>Turnkey Solutions</h4>
-                <p>Complete design, fabrication, testing, and installation services for your piping and process needs</p>
-              </div>
+      <div class="row justify-content-center">
+        <!-- Oil & Gas, Subsea -->
+        <div class="col-4 col-md-3 col-lg-2 industry-column" data-aos="fade-up" data-aos-delay="100">
+          <div class="industry-card">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Cax24Dwhod43eyzc0OVlxZxH4joLHV.png" alt="Oil & Gas, Subsea" class="industry-image">
+            <div class="industry-overlay">
+              <h3 class="industry-title">OIL & GAS</h3>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Features Section -->
-      <div class="product-detail-section" data-aos="fade-up" data-aos-delay="200">
-        <h2>Key Features</h2>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="product-feature">
-              <div class="product-feature-icon">
-                <i class="fas fa-ruler-combined"></i>
-              </div>
-              <div class="product-feature-text">
-                <h4>Precision Engineering</h4>
-                <p>Designed and fabricated to exact specifications with tight tolerances for perfect fit and alignment</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-feature">
-              <div class="product-feature-icon">
-                <i class="fas fa-shield-alt"></i>
-              </div>
-              <div class="product-feature-text">
-                <h4>Material Integrity</h4>
-                <p>Constructed from high-quality materials selected for specific application requirements</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-feature">
-              <div class="product-feature-icon">
-                <i class="fas fa-compress-arrows-alt"></i>
-              </div>
-              <div class="product-feature-text">
-                <h4>Space Optimization</h4>
-                <p>Compact, efficient designs that maximize functionality while minimizing footprint</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="product-feature">
-              <div class="product-feature-icon">
-                <i class="fas fa-truck-loading"></i>
-              </div>
-              <div class="product-feature-text">
-                <h4>Simplified Installation</h4>
-                <p>Pre-assembled and tested components that reduce on-site installation time and costs</p>
-              </div>
+        <!-- Nuclear, Aerospace, Military -->
+        <div class="col-4 col-md-3 col-lg-2 industry-column" data-aos="fade-up" data-aos-delay="200">
+          <div class="industry-card">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-I8SVVkvzka3h68uYOV4lzkofTBvXEL.png" alt="Nuclear, Aerospace, Military" class="industry-image">
+            <div class="industry-overlay">
+              <h3 class="industry-title">NUCLEAR</h3>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Applications Section -->
-      <div class="product-detail-section" data-aos="fade-up" data-aos-delay="300">
-        <h2>Applications</h2>
-        <div class="row">
-          <div class="col-md-6">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Oil and Gas Processing</li>
-              <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Petrochemical Plants</li>
-              <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Refinery Operations</li>
-              <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Power Generation Facilities</li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Water Treatment Systems</li>
-              <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Chemical Processing</li>
-              <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Mining Operations</li>
-              <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Offshore Platforms</li>
-            </ul>
+        <!-- Petrochemical -->
+        <div class="col-4 col-md-3 col-lg-2 industry-column" data-aos="fade-up" data-aos-delay="300">
+          <div class="industry-card">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-b2e6KIikTwiF3fUcLQZY8AVxr2rsai.png" alt="Petrochemical" class="industry-image">
+            <div class="industry-overlay">
+              <h3 class="industry-title">PETROCHEM</h3>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Related Products Section -->
-  <section class="related-products">
-    <div class="container">
-      <h2 class="text-center mb-5">Other <span class="text-gradient">Products</span></h2>
-      
-      <!-- Products Slider -->
-      <div class="swiper products-slider">
-        <div class="swiper-wrapper">
-          <!-- Blocks and Discs -->
-          <div class="swiper-slide" data-aos="fade-up">
-            <a href="blocks-discs.html" class="product-card">
-              <div class="product-image">
-                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/BLOCKS-AND-DISCS-1.png" alt="Blocks and Discs">
-                <div class="product-overlay">
-                </div>
-              </div>
-              <div class="product-content">
-                <h4>Blocks and Discs</h4>
-                <p>Precision-engineered components for critical applications</p>
-              </div>
-            </a>
-          </div>
-
-          <!-- Flanges and Rings -->
-          <div class="swiper-slide" data-aos="fade-up">
-            <a href="flanges-rings.html" class="product-card">
-              <div class="product-image">
-                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/FLANGES-AND-RINGS.png" alt="Flanges and Rings">
-                <div class="product-overlay">
-                </div>
-              </div>
-              <div class="product-content">
-                <h4>Flanges and Rings</h4>
-                <p>Custom-designed flanges and rings for industrial use</p>
-              </div>
-            </a>
-          </div>
-
-          <!-- Self Reinforced Connections -->
-          <div class="swiper-slide" data-aos="fade-up">
-            <a href="self-reinforced-connections.html" class="product-card">
-              <div class="product-image">
-                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/SELF-REINFORCED-CONNECTIONS.png" alt="Self Reinforced Connections">
-                <div class="product-overlay">
-                </div>
-              </div>
-              <div class="product-content">
-                <h4>Self Reinforced Connections</h4>
-                <p>Innovative self-reinforcing connection technology</p>
-              </div>
-            </a>
-          </div>
-
-          <!-- Welded Structures -->
-          <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
-            <a href="welded-structures.html" class="product-card">
-              <div class="product-image">
-                <img src="https://globaltechin.ro/wp-content/uploads/2018/06/WELDED-STRUCTURES-AND-VESSELS.png" alt="Welded Structures">
-                <div class="product-overlay">
-                </div>
-              </div>
-              <div class="product-content">
-                <h4>Welded Structures</h4>
-                <p>Custom-engineered welded structures and pressure vessels</p>
-              </div>
-            </a>
+        <!-- Power Generation -->
+        <div class="col-4 col-md-3 col-lg-2 industry-column" data-aos="fade-up" data-aos-delay="400">
+          <div class="industry-card">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-NOTZHTnrqBT1i9wPTuaIc6SGJvbDWS.png" alt="Power Generation" class="industry-image">
+            <div class="industry-overlay">
+              <h3 class="industry-title">POWER</h3>
+            </div>
           </div>
         </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+
+        <!-- Mining & Construction -->
+        <div class="col-4 col-md-3 col-lg-2 industry-column" data-aos="fade-up" data-aos-delay="500">
+          <div class="industry-card">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-l972OdHYPFHyLGTIDsRAw5j6MqgfOZ.png" alt="Mining & Construction" class="industry-image">
+            <div class="industry-overlay">
+              <h3 class="industry-title">MINING</h3>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
   </section>
@@ -1103,7 +844,7 @@
             <div class="footer-social">
               <a href="#" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
               <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
-              <a href="mailto:contact@globaltechin.com" class="footer-social-link"><i class="far fa-envelope"></i></a>
+              <a href="/cdn-cgi/l/email-protection#4c2f2322382d2f380c2b20232e2d2038292f242522622f2321" class="footer-social-link"><i class="far fa-envelope"></i></a>
               <a href="#" class="footer-social-link"><i class="fab fa-x-twitter"></i></a>
             </div>
           </div>
@@ -1111,13 +852,14 @@
           <div class="footer-links">
             <h5>Quick Links</h5>
             <ul>
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="../hse&quality/index.html">HSE & Quality</a></li>
-              <li><a href="../services/index.html">Services</a></li>
-              <li><a href="../products/index.html">Products</a></li>
-              <li><a href="../materials/index.html">Materials</a></li>
-              <li><a href="../industries/index.html">Industries</a></li>
-              <li><a href="../contact/index.html">Contact</a></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#HSE&QUALITY">HSE & Quality</a></li>
+              <li><a href="#SERVICES">Services</a></li>
+              <li><a href="#PRODUCTS">Products</a></li>
+              <li><a href="#MATERIALS">Materials</a></li>
+              <li><a href="./industries.html">Industries</a></li>
+              <li><a href="#CONTACT">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
             </ul>
           </div>
         </div>
@@ -1135,10 +877,11 @@
   </div>
 
   <!-- JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/upscalejs@2.3.0/dist/upscale.min.js"></script>
 
   <!-- Main JavaScript -->
   <script>
@@ -1149,38 +892,6 @@
       
       // Initialize AOS
       AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
-      
-      // Initialize Swiper
-      const swiperOptions = {
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-          640: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 3,
-          }
-        }
-      };
-      
-      // Initialize products slider
-      if (document.querySelector('.products-slider')) {
-        new Swiper('.products-slider', swiperOptions);
-      }
       
       // Header scroll effect
       window.addEventListener('scroll', () => {
@@ -1213,6 +924,18 @@
       // Back to top button
       document.querySelector('.back-to-top').addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Upscale images
+      const industryImages = document.querySelectorAll('.industry-image');
+      industryImages.forEach(img => {
+        upscale(img, { 
+          model: 'esrgan-slim',
+          output: 'tensor',
+          scale: 1.1 /* Réduit à 1.1 pour des images encore plus petites */
+        }).then(upscaledSrc => {
+          img.src = upscaledSrc;
+        }).catch(e => console.error('Upscaling failed:', e));
       });
     });
   </script>
