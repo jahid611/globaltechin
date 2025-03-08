@@ -18,22 +18,22 @@
   
   <style>
     :root {
-      --primary: #3a0066;       /* Violet profond amélioré pour meilleur contraste */
-      --primary-dark: #2a0045;  /* Variante plus foncée de la couleur principale */
-      --secondary: #8a5fb8;     /* Lavande plus vif pour meilleur contraste */
-      --dark: #1a1a2e;          /* Bleu très foncé presque noir */
-      --light: #f8fafc;         /* Blanc cassé pour le fond */
-      --accent: #6a11cb;        /* Accent mauve */
-      --gray: #64748b;          /* Gris bleuté */
-      --success: #10b981;       /* Vert */
-      --warning: #f59e0b;       /* Orange */
-      --info: #06b6d4;          /* Bleu clair */
-      --text-light: #f8fafc;    /* Texte clair */
-      --text-dark: #1a1a2e;     /* Texte foncé */
+      --primary: #3a0066;
+      --primary-dark: #2a0045;
+      --secondary: #8a5fb8;
+      --dark: #1a1a2e;
+      --light: #f8fafc;
+      --accent: #6a11cb;
+      --gray: #64748b;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --info: #06b6d4;
+      --text-light: #f8fafc;
+      --text-dark: #1a1a2e;
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Poppins', sans-serif;
-      --mauve-light: #b388ff;   /* Mauve clair pour les liens actifs */
-      --header-height: 90px;    /* Hauteur du header */
+      --mauve-light: #b388ff;
+      --header-height: 90px;
     }
 
     body {
@@ -69,9 +69,6 @@
       transition: all 0.4s ease;
       padding: 0;
       margin: 0;
-      width: 100%;
-      left: 0;
-      right: 0;
     }
 
     .header-inner {
@@ -308,7 +305,6 @@
       padding-top: var(--header-height);
     }
 
-    /* Style pour l'image de fond qui prend toute la page */
     .hero-background {
       position: fixed;
       width: 100%;
@@ -316,14 +312,13 @@
       top: 0;
       left: 0;
       z-index: -1;
-      background-image: url('https://telemme.mmsh.fr/wp-content/uploads/2023/06/Sans-titre-1-scaled.jpg');
+      background-image: url('https://4kwallpapers.com/images/wallpapers/dark-purple-3840x1080-17330.png');
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
     }
 
-    /* Overlay sombre pour améliorer la lisibilité du texte */
     .hero-overlay {
       position: fixed;
       width: 100%;
@@ -357,28 +352,28 @@
       font-weight: 400;
     }
 
-    /* Industries Cards */
+    /* Industries Section */
     .industries-section {
       position: relative;
       z-index: 2;
       padding: 80px 0;
     }
 
-    /* Ajout d'une classe pour réduire la largeur des colonnes */
     .industry-column {
-      padding: 0 8px; /* Réduit l'espacement horizontal */
+      padding: 0 8px;
     }
 
+    /* --- Modifications pour une meilleure visibilité des images --- */
     .industry-card {
       position: relative;
       overflow: hidden;
-      border-radius: 0;
+      border-radius: 4px; /* Légère bordure arrondie */
       margin-bottom: 12px;
-      height: 90px; /* Réduit de 120px à 90px */
-      width: 90%; /* Réduit la largeur à 90% du conteneur */
+      height: 150px; /* Hauteur augmentée */
+      width: 90%;
       margin-left: auto;
       margin-right: auto;
-      border: 1px solid black;
+      border: 1px solid #ddd;
       transition: all 0.3s ease;
     }
 
@@ -389,11 +384,9 @@
 
     .industry-image {
       width: 100%;
-      height: 70%; /* Réduit de 75% à 70% */
+      height: 85%; /* Occupe une plus grande partie de la carte */
       object-fit: cover;
-      image-rendering: -webkit-optimize-contrast;
-      transform: translateZ(0);
-      max-height: 63px; /* Réduit de 90px à 63px */
+      display: block;
     }
 
     .industry-overlay {
@@ -401,8 +394,8 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 30%; /* Augmenté de 25% à 30% pour la lisibilité */
-      background: black;
+      height: 15%; /* Réduit pour laisser plus de place à l'image */
+      background: rgba(0, 0, 0, 0.4); /* Opacité réduite pour moins masquer l'image */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -411,7 +404,7 @@
 
     .industry-title {
       color: white;
-      font-size: 0.6rem; /* Réduit de 0.7rem à 0.6rem */
+      font-size: 0.7rem;
       font-weight: 600;
       margin: 0;
       text-transform: uppercase;
@@ -422,19 +415,15 @@
 
     @media (max-width: 767px) {
       .industry-card {
-        height: 80px; /* Réduit de 100px à 80px */
-        width: 85%; /* Encore plus petit sur mobile */
+        height: 120px;
+        width: 85%;
       }
       .industry-title {
-        font-size: 0.55rem; /* Réduit de 0.65rem à 0.55rem */
+        font-size: 0.65rem;
       }
       .industry-image {
-        max-height: 56px;
+        height: 80%;
       }
-    }
-
-    .industry-description {
-      display: none; /* Masquer la description */
     }
 
     /* Footer - Redesigned and Compact */
@@ -676,7 +665,6 @@
       100% { transform: rotate(360deg); }
     }
     
-    /* Responsive Styles */
     @media (max-width: 991px) {
       .hero-title {
         font-size: 3.5rem;
@@ -728,25 +716,25 @@
         <div class="nav-menu" id="nav-menu">
           <ul class="nav-list">
             <li class="nav-item">
-              <a href="index.html" class="nav-link">Home</a>
+              <a href="/home/index.html" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-              <a href="#HSE&QUALITY" class="nav-link">HSE&QUALITY</a>
+              <a href="../hse&quality/hseandquality.html" class="nav-link">HSE&QUALITY</a>
             </li>
             <li class="nav-item">
-              <a href="#SERVICES" class="nav-link">SERVICES</a>
+              <a href="/home/index.html#SERVICES" class="nav-link">SERVICES</a>
             </li>
             <li class="nav-item">
-              <a href="#PRODUCTS" class="nav-link">PRODUCTS</a>
-            </li>
-            <li class="nav-item">
-              <a href="#MATERIALS" class="nav-link">MATERIALS</a>
+              <a href="/home/index.html#PRODUCTS" class="nav-link">PRODUCTS</a>
             </li>
             <li class="nav-item">
               <a href="./industries.html" class="nav-link active">INDUSTRIES</a>
             </li>
             <li class="nav-item">
-              <a href="#CONTACT" class="nav-link">CONTACT</a>
+              <a href="../materials/materials.html" class="nav-link">MATERIALS</a>
+            </li>
+            <li class="nav-item">
+              <a href="../contact/contact.html" class="nav-link">CONTACT</a>
             </li>
           </ul>
           
@@ -852,13 +840,13 @@
           <div class="footer-links">
             <h5>Quick Links</h5>
             <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="#HSE&QUALITY">HSE & Quality</a></li>
-              <li><a href="#SERVICES">Services</a></li>
-              <li><a href="#PRODUCTS">Products</a></li>
-              <li><a href="#MATERIALS">Materials</a></li>
+              <li><a href="/home/index.html">Home</a></li>
+              <li><a href="../hse&quality/hseandquality.html">HSE & Quality</a></li>
+              <li><a href="/home/index.html#SERVICES">Services</a></li>
+              <li><a href="/home/index.html#PRODUCTS">Products</a></li>
+              <li><a href="../materials/materials.html">Materials</a></li>
               <li><a href="./industries.html">Industries</a></li>
-              <li><a href="#CONTACT">Contact</a></li>
+              <li><a href="../contact/contact.html">Contact</a></li>
               <li><a href="#">Privacy Policy</a></li>
             </ul>
           </div>
@@ -877,7 +865,8 @@
   </div>
 
   <!-- JavaScript Libraries -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -932,7 +921,7 @@
         upscale(img, { 
           model: 'esrgan-slim',
           output: 'tensor',
-          scale: 1.1 /* Réduit à 1.1 pour des images encore plus petites */
+          scale: 1.1
         }).then(upscaledSrc => {
           img.src = upscaledSrc;
         }).catch(e => console.error('Upscaling failed:', e));
@@ -941,4 +930,3 @@
   </script>
 </body>
 </html>
-
