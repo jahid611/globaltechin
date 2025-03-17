@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSE & Quality - Global Techin S.R.L</title>
+
+  <!-- Bibliothèques CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #3a0066;       /* Violet profond amélioré pour meilleur contraste */
+      --primary-dark: #2a0045;  /* Variante plus foncée de la couleur principale */
+      --secondary: #8a5fb8;     /* Lavande plus vif pour meilleur contraste */
+      --dark: #1a1a2e;          /* Bleu très foncé presque noir */
+      --light: #f8fafc;         /* Blanc cassé pour le fond */
+      --accent: #6a11cb;        /* Accent mauve */
+      --gray: #64748b;          /* Gris bleuté */
+      --success: #10b981;       /* Vert */
+      --warning: #f59e0b;       /* Orange */
+      --info: #06b6d4;          /* Bleu clair */
+      --text-light: #f8fafc;    /* Texte clair */
+      --text-dark: #1a1a2e;     /* Texte foncé */
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Poppins', sans-serif;
+      --mauve-light: #b388ff;   /* Mauve clair pour les liens actifs */
+      --header-height: 90px;    /* Hauteur du header */
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--dark);
+      overflow-x: hidden;
+      background-color: var(--light);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+    }
+
+    .section-padding {
+      padding: 120px 0;
+    }
+
+    .text-gradient {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* ===== HEADER REDESIGN ===== */
+    .header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      transition: all 0.4s ease;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      left: 0;
+      right: 0;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--header-height);
+      position: relative;
+      background-color: rgba(17, 17, 17, 0.85);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0 30px;
+      margin: 0;
+      width: 100%;
+    }
+
+    .header .container-fluid {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+
+    .header.scrolled .header-inner {
+      height: 70px;
+      background-color: rgba(17, 17, 17, 0.95);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .logo img {
+      height: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled .logo img {
+      height: 40px;
+    }
+
+    .logo-text {
+      margin-left: 15px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.8rem;
+      background: linear-gradient(to right, var(--light), var(--mauve-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled .logo-text {
+      font-size: 1.5rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      transition: all 0.3s ease;
+    }
+
+    .nav-list {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-item {
+      margin: 0 5px;
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      padding: 10px 15px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--light) !important;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--mauve-light));
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--mauve-light) !important;
+    }
+
+    .nav-link:hover:before, .nav-link.active:before {
+      transform: translateX(0);
+    }
+
+    .nav-link.active {
+      position: relative;
+    }
+
+    .nav-link.active:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(179, 136, 255, 0.1);
+      border-radius: 4px;
+      z-index: -1;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    /* Mobile Menu */
+    @media (max-width: 991px) {
+      .mobile-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 100px;
+        transition: all 0.5s ease;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-list {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .nav-item {
+        margin: 10px 0;
+        width: 100%;
+      }
+
+      .nav-link {
+        padding: 15px 25px;
+        width: 100%;
+        text-align: left;
+        border-left: 3px solid transparent;
+        margin: 10px 0;
+        color: var(--light) !important;
+      }
+
+      .nav-link:before {
+        display: none;
+      }
+
+      .nav-link:hover, .nav-link.active {
+        border-left: 3px solid var(--mauve-light);
+        background: rgba(179, 136, 255, 0.1);
+      }
+    }
+
+    /* Hero Section avec image de fond */
+    .hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+      padding-top: var(--header-height);
+    }
+
+    /* Style pour l'image de fond qui prend toute la page */
+    .hero-background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-image: url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?q=80&w=2070&auto=format&fit=crop');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    /* Overlay sombre pour améliorer la lisibilité du texte */
+    .hero-overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--text-light);
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      color: white;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+      font-weight: 400;
+    }
+
+    /* HSE Section */
+    .hse-section {
+      position: relative;
+      z-index: 2;
+      background-color: rgba(26, 26, 46, 0.95);
+      padding: 80px 0;
+      color: var(--text-light);
+    }
+
+    .hse-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      height: 100%;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      margin-bottom: 30px;
+    }
+
+    .hse-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(106, 17, 203, 0.3);
+      border-color: rgba(138, 95, 184, 0.3);
+    }
+
+    .hse-card h3 {
+      color: white;
+      margin-bottom: 25px;
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .hse-card h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 3px;
+    }
+
+    .hse-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .hse-image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      height: 350px;
+    }
+
+    .hse-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .hse-card:hover .hse-image {
+      transform: scale(1.05);
+    }
+
+    .hse-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(26, 26, 46, 0.2), rgba(58, 0, 102, 0.7));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .hse-card:hover .hse-image-overlay {
+      opacity: 1;
+    }
+
+    .hse-image-overlay-content {
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hse-image-overlay-content h4 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .certificate-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px 25px;
+      border-radius: 50px;
+      margin-top: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .certificate-badge:hover {
+      background: rgba(106, 17, 203, 0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .certificate-badge i {
+      font-size: 2rem;
+      margin-right: 15px;
+      color: var(--success);
+    }
+
+    .certificate-badge span {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .ppe-image {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .ppe-image:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(106, 17, 203, 0.4);
+    }
+
+    .ppe-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .ppe-item:hover {
+      background: rgba(106, 17, 203, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .ppe-item h5 {
+      color: white;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .ppe-item h5 i {
+      margin-right: 10px;
+      color: var(--mauve-light);
+    }
+
+    .ppe-item p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    /* Footer - Redesigned and Compact */
+    footer {
+      background: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(42, 0, 69, 0.95));
+      color: var(--text-light);
+      padding: 40px 0 15px;
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-brand {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-brand img {
+      height: 40px;
+      margin-right: 15px;
+    }
+
+    .footer-brand-text {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--light), var(--mauve-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-info {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-about {
+      flex: 0 0 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-about {
+        flex: 0 0 60%;
+        max-width: 60%;
+      }
+    }
+
+    .footer-text {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .footer-social-link {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .footer-social-link:hover {
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+    }
+
+    .footer-links {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    @media (min-width: 768px) {
+      .footer-links {
+        flex: 0 0 35%;
+        max-width: 35%;
+      }
+    }
+
+    .footer-links h5 {
+      color: white;
+      margin-bottom: 15px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-links h5:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 10px;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    .footer-links ul li a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-links ul li a:before {
+      content: '\f105';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-right: 8px;
+      color: var(--mauve-light);
+      font-size: 0.8rem;
+    }
+
+    .footer-links ul li a:hover {
+      color: var(--mauve-light);
+      transform: translateX(5px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 15px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(58, 0, 102, 0.3);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 991px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+      .section-padding {
+        padding: 80px 0;
+      }
+      .hse-card {
+        padding: 30px;
+      }
+      .hse-image-container {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      .section-padding {
+        padding: 60px 0;
+      }
+      .hse-card {
+        padding: 25px;
+      }
+      .hse-card h3 {
+        font-size: 1.8rem;
+      }
+      .hse-text {
+        font-size: 1rem;
+      }
+      .certificate-badge {
+        padding: 12px 20px;
+      }
+      .certificate-badge i {
+        font-size: 1.5rem;
+      }
+      .certificate-badge span {
+        font-size: 0.9rem;
+      }
+      .hse-image-container {
+        height: 250px;
+      }
+      .ppe-image {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Image de fond et overlay pour toute la page -->
+  <div class="hero-background"></div>
+  <div class="hero-overlay"></div>
+
+  <!-- Header Redesign -->
+  <header class="header">
+    <div class="container-fluid">
+      <div class="header-inner">
+        <a href="/home/index.html" class="logo">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FetchedFromUrl_1741229287522_preview_rev_1-RovxIHghJsU5ASid6M8cPtwobZD6ib.png" alt="Global Techin Logo">
+        </a>
+        
+        <button class="mobile-toggle" id="mobile-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="/index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="hseandquality.html" class="nav-link active">HSE&QUALITY</a>
+            </li>
+            <li class="nav-item">
+              <a href="/index.html#SERVICES" class="nav-link">SERVICES</a>
+            </li>
+            <li class="nav-item">
+              <a href="/index.html#PRODUCTS" class="nav-link">PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+              <a href="../industries/industries.html" class="nav-link">INDUSTRIES</a>
+            </li>
+            <li class="nav-item">
+              <a href="../materials/materials.html" class="nav-link">MATERIALS</a>
+            </li>
+            <li class="nav-item">
+              <a href="../contact/contact.html" class="nav-link">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hse-hero" class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12 hero-content text-center" data-aos="fade-up" data-aos-duration="1000">
+          <h1 class="hero-title">HSE & <span class="text-gradient">Quality</span></h1>
+          <p class="hero-subtitle">
+            Our commitment to health, safety, and quality excellence is at the core of everything we do at GlobalTechin.
+            We believe that maintaining the highest standards is essential for our success and the satisfaction of our clients.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HSE Section -->
+  <section id="hse-content" class="hse-section">
+    <div class="container">
+      <div class="row">
+        <!-- Safety First Section -->
+        <div class="col-lg-12" data-aos="fade-up" data-aos-duration="800">
+          <div class="hse-card">
+            <div class="hse-image-container">
+              <img src="https://freedesignfile.com/upload/2018/06/Blue-safety-icons-set.jpg" alt="Safety First" class="hse-image">
+              <div class="hse-image-overlay">
+                <div class="hse-image-overlay-content">
+                  <h4>Safety is our top priority</h4>
+                </div>
+              </div>
+            </div>
+            
+            <h3>GLOBALTECHIN – Safety comes first</h3>
+            <p class="hse-text">
+              GlobalTechin is totally committed to the protection of its employees, customers and contractors from any harm or loss resulting from the company's activities. Globally we strive for continual improvement in all areas of health and safety.
+            </p>
+            <p class="hse-text">
+              We pursue these improvements through compliance with all applicable legal requirements, providing and maintaining a safe and healthy working environment and working together with our employees, clients and visitors to achieve our goal of Zero Accidents by communicating and applying our HSE policy statement.
+            </p>
+          </div>
+        </div>
+
+        <!-- Quality Section -->
+        <div class="col-lg-12" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+          <div class="hse-card">
+            <div class="hse-image-container">
+              <img src="https://images.squarespace-cdn.com/content/v1/597b0445414fb5bf090820a2/1686657890572-31GWV7VT3PDSIZ5CWB9F/HSE+Solutions+Web+Banner.png?format=1500w" alt="Quality Management" class="hse-image">
+              <div class="hse-image-overlay">
+                <div class="hse-image-overlay-content">
+                  <h4>Quality excellence in everything we do</h4>
+                </div>
+              </div>
+            </div>
+            
+            <h3>HSE AND QUALITY</h3>
+            <p class="hse-text">
+              Commitment to quality has enabled GlobalTechin to supply its products to the most demanding industries. Customer approach and Quality care have been essential bases which have contributed to our accomplishment and growth of GlobalTechin today.
+            </p>
+            <p class="hse-text">
+              Our quality system is certified in conformity with ISO 9001 by Lloyd's Register, ensuring that all our processes meet international standards of excellence.
+            </p>
+            
+            <div class="certificate-badge">
+              <i class="fas fa-certificate"></i>
+              <span>ISO 9001 Certified by Lloyd's Register</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Safety Equipment Section -->
+        <div class="col-lg-12 mt-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="50">
+          <div class="hse-card">
+            <h3>Personal Protective Equipment (PPE)</h3>
+            <div class="row align-items-center">
+              <div class="col-lg-7">
+                <p class="hse-text">
+                  At GlobalTechin, we enforce strict safety protocols including mandatory use of appropriate personal protective equipment. Our comprehensive safety program ensures that all personnel are properly equipped with the necessary safety gear for their specific tasks.
+                </p>
+                
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="ppe-item">
+                      <h5><i class="fas fa-hard-hat"></i> Hard Hat</h5>
+                      <p>Mandatory head protection in all operational areas to prevent head injuries from falling objects and impacts.</p>
+                    </div>
+                    
+                    <div class="ppe-item">
+                      <h5><i class="fas fa-glasses"></i> Safety Glasses</h5>
+                      <p>Eye protection against flying particles, dust, and chemical splashes during manufacturing operations.</p>
+                    </div>
+                    
+                    <div class="ppe-item">
+                      <h5><i class="fas fa-mitten"></i> Protective Gloves</h5>
+                      <p>Hand protection against cuts, abrasions, chemicals, and thermal hazards during material handling.</p>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <div class="ppe-item">
+                      <h5><i class="fas fa-vest"></i> Construction Vest</h5>
+                      <p>High-visibility clothing to ensure workers are easily seen in all operational environments.</p>
+                    </div>
+                    
+                    <div class="ppe-item">
+                      <h5><i class="fas fa-boot"></i> Protective Boots</h5>
+                      <p>Safety footwear with steel toes and anti-slip soles to protect against falling objects and slippery surfaces.</p>
+                    </div>
+                    
+                    <div class="ppe-item">
+                      <h5><i class="fas fa-traffic-cone"></i> Safety Awareness</h5>
+                      <p>Proper signage and safety markers to identify hazardous areas and maintain safe working conditions.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-5 text-center">
+                <img src="https://hsiassetstorage.sfo2.digitaloceanspaces.com/assets/images/blog/oil-and-gas-PPE.jpg" alt="Safety Equipment Diagram" class="ppe-image img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer - Redesigned and Compact -->
+  <footer>
+    <div class="container">
+      <div class="footer-wrapper">
+        <div class="footer-brand">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FetchedFromUrl_1741229287522_preview_rev_1-RovxIHghJsU5ASid6M8cPtwobZD6ib.png" id="footer-logo" alt="Global Techin Logo">
+        </div>
+        
+        <div class="footer-info">
+          <div class="footer-about">
+            <p class="footer-text">We provide high-quality solutions for the oil and gas, petrochemical, nuclear, renewable energy sectors and beyond. Our commitment to excellence drives everything we do.</p>
+            <div class="footer-social">
+              <a href="https://www.instagram.com/globaltechin/" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+              <a href="mailto:contact@globaltechin.com" class="footer-social-link"><i class="far fa-envelope"></i></a>
+              <a href="https://x.com/global_techin" class="footer-social-link"><i class="fab fa-x-twitter"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-links">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="/index.html">Home</a></li>
+              <li><a href="./hseandquality.html">HSE & Quality</a></li>
+              <li><a href="/index.html#SERVICES">Services</a></li>
+              <li><a href="/index.html#PRODUCTS">Products</a></li>
+              <li><a href="../materials/materials.html">Materials</a></li>
+              <li><a href="../industries/industries.html">Industries</a></li>
+              <li><a href="../contact/contact.html">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="copyright">© 2025 GlobalTechin S.R.L. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Main JavaScript -->
+  <script>
+    window.addEventListener('load', function() {
+      // Initialize AOS
+      AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+      
+      // Header scroll effect
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        header.classList.toggle('scrolled', window.scrollY > 50);
+        const backToTop = document.querySelector('.back-to-top');
+        backToTop.classList.toggle('active', window.scrollY > 300);
+      });
+      
+      // Mobile menu toggle
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      
+      mobileToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        mobileToggle.innerHTML = navMenu.classList.contains('active') 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+      });
+      
+      // Close mobile menu when clicking on a nav link
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+      
+      // Back to top button
+      document.querySelector('.back-to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
+

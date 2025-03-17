@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forging & Heat Treatment - GlobalTechin</title>
+
+<!-- Bibliothèques CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #3a0066;       /* Violet profond amélioré pour meilleur contraste */
+  --primary-dark: #2a0045;  /* Variante plus foncée de la couleur principale */
+  --secondary: #8a5fb8;     /* Lavande plus vif pour meilleur contraste */
+  --dark: #1a1a2e;          /* Bleu très foncé presque noir */
+  --light: #f8fafc;         /* Blanc cassé pour le fond */
+  --accent: #6a11cb;        /* Accent mauve */
+  --gray: #64748b;          /* Gris bleuté */
+  --success: #10b981;       /* Vert */
+  --warning: #f59e0b;       /* Orange */
+  --info: #06b6d4;          /* Bleu clair */
+  --text-light: #f8fafc;    /* Texte clair */
+  --text-dark: #1a1a2e;     /* Texte foncé */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+  --mauve-light: #b388ff;   /* Mauve clair pour les liens actifs */
+  --header-height: 90px;    /* Hauteur du header */
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark);
+  overflow-x: hidden;
+  background-color: var(--light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.section-padding {
+  padding: 120px 0;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ===== HEADER REDESIGN ===== */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 0.4s ease;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  position: relative;
+  background-color: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 30px;
+  margin: 0;
+  width: 100%;
+}
+
+.header .container-fluid {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.header.scrolled .header-inner {
+  height: 70px;
+  background-color: rgba(17, 17, 17, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.logo img {
+  height: 50px;
+  transition: all 0.3s ease;
+}
+
+.header.scrolled .logo img {
+  height: 40px;
+}
+
+.logo-text {
+  margin-left: 15px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.8rem;
+  background: linear-gradient(to right, var(--light), var(--mauve-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: all 0.3s ease;
+}
+
+.header.scrolled .logo-text {
+  font-size: 1.5rem;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: all 0.3s ease;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 5px;
+  position: relative;
+}
+
+.nav-link {
+  display: block;
+  padding: 10px 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--light) !important;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, var(--primary), var(--mauve-light));
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--mauve-light) !important;
+}
+
+.nav-link:hover:before, .nav-link.active:before {
+  transform: translateX(0);
+}
+
+.nav-link.active {
+  position: relative;
+}
+
+.nav-link.active:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(179, 136, 255, 0.1);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.header-btn {
+  padding: 8px 20px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+}
+
+.header-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(106, 17, 203, 0.5);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Mobile Menu */
+@media (max-width: 991px) {
+  .mobile-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 100px;
+    transition: all 0.5s ease;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-item {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .nav-link {
+    padding: 15px 25px;
+    width: 100%;
+    text-align: left;
+    border-left: 3px solid transparent;
+    margin: 10px 0;
+    color: var(--light) !important;
+  }
+
+  .nav-link:before {
+    display: none;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    border-left: 3px solid var(--mauve-light);
+    background: rgba(179, 136, 255, 0.1);
+  }
+
+  .header-actions {
+    margin: 20px 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Service Detail Page Styles */
+.service-detail-hero {
+  position: relative;
+  padding-top: calc(var(--header-height) + 50px);
+  padding-bottom: 50px;
+  background: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(42, 0, 69, 0.95));
+  color: var(--text-light);
+}
+
+.service-detail-title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.service-detail-image {
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+}
+
+.service-detail-image:hover {
+  transform: scale(1.02);
+}
+
+.service-detail-content {
+  padding: 80px 0;
+  background-color: var(--light);
+}
+
+.service-detail-section {
+  margin-bottom: 60px;
+}
+
+.service-detail-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.service-detail-section h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.service-detail-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--gray);
+  margin-bottom: 20px;
+}
+
+.service-feature {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.service-feature-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  color: white;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.service-feature-text h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--primary-dark);
+}
+
+.service-feature-text p {
+  font-size: 1rem;
+  color: var(--gray);
+  margin-bottom: 0;
+}
+
+.service-gallery {
+  margin-top: 40px;
+}
+
+.service-gallery-title {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.gallery-image {
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.gallery-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Related Services Section */
+.related-services {
+  padding: 80px 0;
+  background: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(42, 0, 69, 0.95));
+  color: var(--text-light);
+}
+
+.related-services h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: white;
+}
+
+/* Swiper Styles */
+.swiper {
+  padding: 30px 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 1.2rem;
+}
+
+.swiper-pagination-bullet {
+  background: #ffffff;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #ffffff;
+}
+
+.service-card {
+  background: #1a1a1a;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  margin: 15px;
+  height: 100%;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  text-decoration: none;
+  color: inherit;
+}
+
+.service-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.service-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(58, 0, 102, 0.8), rgba(138, 95, 184, 0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-overlay {
+  opacity: 1;
+}
+
+.service-content {
+  padding: 25px;
+  text-align: center;
+}
+
+.service-content h4 {
+  color: #ffffff;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.service-content p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+/* Footer - Redesigned and Compact */
+footer {
+  background: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(42, 0, 69, 0.95));
+  color: var(--text-light);
+  padding: 40px 0 15px;
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-brand {
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.footer-brand img {
+  height: 40px;
+  margin-right: 15px;
+}
+
+.footer-brand-text {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, var(--light), var(--mauve-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.footer-info {
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-about {
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .footer-about {
+    flex: 0 0 60%;
+    max-width: 60%;
+  }
+}
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.footer-social-link {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.footer-social-link:hover {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+}
+
+.footer-links {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .footer-links {
+    flex: 0 0 35%;
+    max-width: 35%;
+  }
+}
+
+.footer-links h5 {
+  color: white;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-links h5:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.footer-links ul li a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.footer-links ul li a:before {
+  content: '\f105';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-right: 8px;
+  color: var(--mauve-light);
+  font-size: 0.8rem;
+}
+
+.footer-links ul li a:hover {
+  color: var(--mauve-light);
+  transform: translateX(5px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.copyright {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 99;
+}
+
+.back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(58, 0, 102, 0.3);
+}
+
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+.preloader.fade-out {
+  opacity: 0;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Styles */
+@media (max-width: 991px) {
+  .service-detail-title {
+    font-size: 2.8rem;
+  }
+  .service-detail-section h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .service-detail-title {
+    font-size: 2.2rem;
+  }
+  .service-detail-section h2 {
+    font-size: 1.8rem;
+  }
+  .service-detail-section p {
+    font-size: 1rem;
+  }
+  .service-feature-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+/* Process Timeline Styles */
+.timeline-wrapper {
+  position: relative;
+  padding-left: 50px;
+}
+
+.timeline-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(58, 0, 102, 0.2);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.timeline-number {
+  position: absolute;
+  left: -50px;
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.timeline-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.process-images img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Heat Treatment Types Grid */
+.heat-treatment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.heat-treatment-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.heat-treatment-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.heat-treatment-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: white;
+  font-size: 1.8rem;
+}
+
+.heat-treatment-card h4 {
+  color: var(--primary-dark);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.heat-treatment-card p {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* Materials List */
+.materials-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.material-badge {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 8px 15px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 3px 10px rgba(58, 0, 102, 0.2);
+  transition: all 0.3s ease;
+}
+
+.material-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(58, 0, 102, 0.3);
+}
+
+/* Materials Section */
+.materials-section {
+  padding: 60px 0;
+  background: #fff;
+}
+
+.materials-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.materials-section h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.materials-section p {
+  color: var(--gray);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 1.5rem 0;
+  max-width: 800px;
+}
+
+.materials-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.material-item {
+  background: #fff;
+  color: var(--primary);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid rgba(58, 0, 102, 0.2);
+  transition: all 0.3s ease;
+}
+
+.material-item:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(58, 0, 102, 0.15);
+}
+
+@media (max-width: 768px) {
+  .materials-section h2 {
+    font-size: 2rem;
+  }
+  
+  .materials-section p {
+    font-size: 1rem;
+  }
+  
+  .material-item {
+    font-size: 0.9rem;
+  }
+}
+</style>
+</head>
+<body>
+<!-- Preloader -->
+<div class="preloader">
+<div class="loader"></div>
+</div>
+
+<!-- Header Redesign -->
+<header class="header">
+  <div class="container-fluid">
+    <div class="header-inner">
+      <a href="../home/index.html" class="logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FetchedFromUrl_1741229287522_preview_rev_1-RovxIHghJsU5ASid6M8cPtwobZD6ib.png" alt="Global Techin Logo">
+      </a>
+      
+      <button class="mobile-toggle" id="mobile-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="../hse&quality/hseandquality.html" class="nav-link">HSE&QUALITY</a>
+          </li>
+          <li class="nav-item">
+            <a href="/index.html#SERVICES" class="nav-link">SERVICES</a>
+          </li>
+          <li class="nav-item">
+            <a href="/index.html#PRODUCTS" class="nav-link active">PRODUCTS</a>
+          </li>
+          <li class="nav-item">
+            <a href="../industries/industries.html" class="nav-link">INDUSTRIES</a>
+          </li>
+          <li class="nav-item">
+            <a href="../materials/materials.html" class="nav-link">MATERIALS</a>
+          </li>
+          <li class="nav-item">
+            <a href="../contact/contact.html" class="nav-link">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Service Hero Section -->
+<section class="service-detail-hero">
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+      <h1 class="service-detail-title">FORGING & <span class="text-gradient">HEAT TREATMENT</span></h1>
+      <p class="lead text-light mb-4">
+        Advanced metallurgical processes and heat treatment solutions that enhance material properties, improve performance, and extend the service life of critical components.
+      </p>
+      <div class="d-flex gap-3 mb-4">
+        <a href="../contact/index.html" class="btn btn-custom btn-primary-custom">Request Quote</a>
+        <a href="#process" class="btn btn-custom btn-outline-custom">Our Process</a>
+      </div>
+    </div>
+    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+      <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-forging-and-heat-icon.png" 
+           alt="Forging & Heat Treatment" class="service-detail-image img-fluid">
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Service Content Section -->
+<section class="service-detail-content">
+<div class="container">
+  <!-- Overview Section -->
+  <div class="service-detail-section" data-aos="fade-up">
+    <h2>Service Overview</h2>
+    <p>
+      GlobalTechin's Forging & Heat Treatment services provide advanced metallurgical solutions that enhance the mechanical properties and performance of metal components. Our comprehensive forging capabilities allow us to shape metal with precision, while our specialized heat treatment processes optimize material properties to meet the most demanding requirements.
+    </p>
+    <p>
+      Whether you need to improve strength, hardness, ductility, or corrosion resistance, our expert team utilizes state-of-the-art equipment and proven methodologies to deliver consistent quality and reliable results. We work with a wide range of materials, including carbon steel, alloy steel, stainless steel, and various non-ferrous alloys, to provide tailored solutions for your specific applications.
+    </p>
+  </div>
+
+  <!-- Process Section -->
+  <div id="process" class="service-detail-section" data-aos="fade-up" data-aos-delay="100">
+    <h2>Our Process</h2>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="timeline-wrapper">
+          <div class="timeline-item">
+            <div class="timeline-number">1</div>
+            <div class="timeline-content">
+              <h5>Material Selection</h5>
+              <p>Careful selection of appropriate materials based on application requirements and performance expectations</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-number">2</div>
+            <div class="timeline-content">
+              <h5>Forging Process</h5>
+              <p>Precision shaping of metal through controlled deformation at elevated temperatures to achieve desired geometry and enhance mechanical properties</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-number">3</div>
+            <div class="timeline-content">
+              <h5>Heat Treatment</h5>
+              <p>Specialized thermal processing to optimize material properties such as hardness, strength, and ductility</p>
+            </div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-number">4</div>
+            <div class="timeline-content">
+              <h5>Quality Verification</h5>
+              <p>Comprehensive testing and inspection to ensure compliance with specifications and performance requirements</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="process-images">
+  <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-forging-and-heat-treatment-2-changed.png" 
+       alt="Forging Process" class="img-fluid rounded mb-4">
+  <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-forging-and-heat-treatment-1-3-changed.png" 
+       alt="Heat Treatment" class="img-fluid rounded">
+</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Heat Treatment Types Section -->
+  <div class="service-detail-section" data-aos="fade-up" data-aos-delay="200">
+    <h2>Heat Treatment Solutions</h2>
+    <p>
+      We offer a comprehensive range of heat treatment processes to enhance material properties and meet specific performance requirements. Our state-of-the-art facilities and experienced team ensure consistent quality and reliable results for every project.
+    </p>
+    
+    <div class="heat-treatment-grid">
+      <div class="heat-treatment-card">
+        <div class="heat-treatment-icon">
+          <i class="fas fa-fire"></i>
+        </div>
+        <h4>Annealing</h4>
+        <p>Controlled heating and cooling to reduce hardness, increase ductility, and relieve internal stresses</p>
+      </div>
+      
+      <div class="heat-treatment-card">
+        <div class="heat-treatment-icon">
+          <i class="fas fa-temperature-high"></i>
+        </div>
+        <h4>Normalizing</h4>
+        <p>Heating above critical temperature followed by air cooling to refine grain structure and improve mechanical properties</p>
+      </div>
+      
+      <div class="heat-treatment-card">
+        <div class="heat-treatment-icon">
+          <i class="fas fa-tint"></i>
+        </div>
+        <h4>Quenching</h4>
+        <p>Rapid cooling from high temperature to increase hardness and strength through controlled phase transformation</p>
+      </div>
+      
+      <div class="heat-treatment-card">
+        <div class="heat-treatment-icon">
+          <i class="fas fa-balance-scale"></i>
+        </div>
+        <h4>Tempering</h4>
+        <p>Controlled reheating after quenching to achieve optimal balance between hardness and ductility</p>
+      </div>
+      
+      <div class="heat-treatment-card">
+        <div class="heat-treatment-icon">
+          <i class="fas fa-atom"></i>
+        </div>
+        <h4>Solution Treatment</h4>
+        <p>Heating and rapid cooling to dissolve precipitates and create a supersaturated solid solution</p>
+      </div>
+      
+      <div class="heat-treatment-card">
+        <div class="heat-treatment-icon">
+          <i class="fas fa-layer-group"></i>
+        </div>
+        <h4>Precipitation Hardening</h4>
+        <p>Controlled aging to form fine precipitates that strengthen the material through precipitation mechanisms</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Materials Section -->
+  <div class="materials-section">
+  <div class="container">
+    <h2>Materials Expertise</h2>
+    <p>
+      Our forging and heat treatment capabilities extend to a wide range of materials, allowing us to provide comprehensive solutions for diverse applications across various industries.
+    </p>
+    
+    <div class="materials-grid">
+      <span class="material-item">Carbon Steel</span>
+      <span class="material-item">Alloy Steel</span>
+      <span class="material-item">Stainless Steel</span>
+      <span class="material-item">Tool Steel</span>
+      <span class="material-item">Nickel Alloys</span>
+      <span class="material-item">Copper Alloys</span>
+      <span class="material-item">Aluminum Alloys</span>
+      <span class="material-item">Titanium Alloys</span>
+      <span class="material-item">Duplex Stainless Steel</span>
+      <span class="material-item">Super Duplex</span>
+      <span class="material-item">Inconel</span>
+      <span class="material-item">Monel</span>
+      <span class="material-item">Hastelloy</span>
+    </div>
+  </div>
+</div>
+
+  <!-- Benefits Section -->
+  <div class="service-detail-section" data-aos="fade-up" data-aos-delay="400">
+    <h2>Key Benefits</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="service-feature">
+          <div class="service-feature-icon">
+            <i class="fas fa-dumbbell"></i>
+          </div>
+          <div class="service-feature-text">
+            <h4>Enhanced Mechanical Properties</h4>
+            <p>Improved strength, hardness, and ductility through optimized microstructure</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="service-feature">
+          <div class="service-feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div class="service-feature-text">
+            <h4>Increased Durability</h4>
+            <p>Extended service life and improved resistance to wear, fatigue, and corrosion</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="service-feature">
+          <div class="service-feature-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <div class="service-feature-text">
+            <h4>Optimized Performance</h4>
+            <p>Tailored material properties to meet specific operational requirements</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="service-feature">
+          <div class="service-feature-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="service-feature-text">
+            <h4>Quality Assurance</h4>
+            <p>Rigorous testing and verification to ensure consistent quality and reliability</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Applications Section -->
+  <div class="service-detail-section" data-aos="fade-up" data-aos-delay="500">
+    <h2>Applications</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Oil and Gas Equipment</li>
+          <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Petrochemical Components</li>
+          <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Power Generation Systems</li>
+          <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Nuclear Industry Applications</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Marine and Offshore Structures</li>
+          <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Heavy Machinery Components</li>
+          <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Aerospace Parts</li>
+          <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i> Defense Industry Equipment</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Section -->
+  <div id="gallery" class="service-detail-section" data-aos="fade-up" data-aos-delay="600">
+    <h2>Service Gallery</h2>
+    <p>View examples of our forging and heat treatment projects.</p>
+    
+    <div class="service-gallery">
+      <div class="row">
+    <div class="col-md-6">
+      <div class="gallery-image">
+        <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-forging-and-heat-treatment-2-changed.png" alt="Forging Process" class="img-fluid">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="gallery-image">
+        <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-forging-and-heat-treatment-1-3-changed.png" alt="Heat Treatment" class="img-fluid">
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Related Services Section -->
+<section class="related-services">
+<div class="container">
+  <h2 class="text-center mb-5">Other <span class="text-gradient">Services</span></h2>
+  
+  <!-- Services Slider -->
+  <div class="swiper services-slider">
+    <div class="swiper-wrapper">
+      <!-- Project Management -->
+      <div class="swiper-slide" data-aos="fade-up">
+        <a href="project-management.html" class="service-card">
+          <div class="service-image">
+            <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-project-management-and-documentation-icon.png" alt="Project Management">
+            <div class="service-overlay">
+              <div class="service-icon">
+                <i class="fas fa-tasks"></i>
+              </div>
+            </div>
+          </div>
+          <div class="service-content">
+            <h4>Project Management</h4>
+            <p>Strategic project planning and execution with comprehensive documentation</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Engineering -->
+      <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
+        <a href="engineering.html" class="service-card">
+          <div class="service-image">
+            <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-engineering-icon.png" alt="Engineering">
+            <div class="service-overlay">
+              <div class="service-icon">
+                <i class="fas fa-cogs"></i>
+              </div>
+            </div>
+          </div>
+          <div class="service-content">
+            <h4>Engineering</h4>
+            <p>Cutting-edge 3D modeling and innovative technical solutions</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Precision Machining -->
+      <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+        <a href="precision-machining.html" class="service-card">
+          <div class="service-image">
+            <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-precision-machining-icon.png" alt="Precision Machining">
+            <div class="service-overlay">
+              <div class="service-icon">
+                <i class="fas fa-cogs"></i>
+              </div>
+            </div>
+          </div>
+          <div class="service-content">
+            <h4>Precision Machining</h4>
+            <p>High-precision manufacturing with state-of-the-art equipment</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Cladding and Buttering -->
+      <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
+        <a href="cladding-buttering.html" class="service-card">
+          <div class="service-image">
+            <img src="https://globaltechin.ro/wp-content/uploads/2018/06/services-cladding-and-buttering-icon.png" alt="Cladding and Buttering">
+            <div class="service-overlay">
+              <div class="service-icon">
+                <i class="fas fa-layer-group"></i>
+              </div>
+            </div>
+          </div>
+          <div class="service-content">
+            <h4>Cladding and Buttering</h4>
+            <p>Specialized surface engineering and material protection techniques</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+</section>
+
+<!-- Footer - Redesigned and Compact -->
+<footer>
+  <div class="container">
+    <div class="footer-wrapper">
+      <div class="footer-brand">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/FetchedFromUrl_1741229287522_preview_rev_1-RovxIHghJsU5ASid6M8cPtwobZD6ib.png" id="footer-logo" alt="Global Techin Logo">
+        <span class="footer-brand-text">GlobalTechin</span>
+      </div>
+      
+      <div class="footer-info">
+        <div class="footer-about">
+          <p class="footer-text">We provide high-quality solutions for the oil and gas, petrochemical, nuclear, renewable energy sectors and beyond. Our commitment to excellence drives everything we do.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/globaltechin/" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:contact@globaltechin.com" class="footer-social-link"><i class="far fa-envelope"></i></a>
+            <a href="https://x.com/global_techin" class="footer-social-link"><i class="fab fa-x-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h5>Quick Links</h5>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="../hse&quality/hseandquality.html">HSE & Quality</a></li>
+            <li><a href="/index.htmlSERVICES#">Services</a></li>
+            <li><a href="/index.htmlPRODUCTS#">Products</a></li>
+            <li><a href="../materials/materials.html">Materials</a></li>
+            <li><a href="../industries/industries.html">Industries</a></li>
+            <li><a href="../contact/contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="copyright">© 2025 GlobalTechin S.R.L. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<div class="back-to-top">
+<i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Main JavaScript -->
+<script>
+window.addEventListener('load', function() {
+  const preloader = document.querySelector('.preloader');
+  preloader.classList.add('fade-out');
+  setTimeout(() => { preloader.style.display = 'none'; }, 500);
+  
+  // Initialize AOS
+  AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+  
+  // Initialize Swiper
+  const swiperOptions = {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 3,
+      }
+    }
+  };
+  
+  // Initialize services slider
+  if (document.querySelector('.services-slider')) {
+    new Swiper('.services-slider', swiperOptions);
+  }
+  
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+    const backToTop = document.querySelector('.back-to-top');
+    backToTop.classList.toggle('active', window.scrollY > 300);
+  });
+  
+  // Mobile menu toggle
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  
+  mobileToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    mobileToggle.innerHTML = navMenu.classList.contains('active') 
+      ? '<i class="fas fa-times"></i>' 
+      : '<i class="fas fa-bars"></i>';
+  });
+  
+  // Close mobile menu when clicking on a nav link
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+  });
+  
+  // Back to top button
+  document.querySelector('.back-to-top').addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
+
